@@ -3,7 +3,7 @@
 //  Mamoot!
 //
 //  Created by Alex Modroño Vara on 02/09/2019.
-//  Copyright © 2019 Semiak & JoeyPi. All rights reserved.
+//  Copyright © 2019 Semiak, Lygre & JoeyPi. All rights reserved.
 //
 
 import UIKit

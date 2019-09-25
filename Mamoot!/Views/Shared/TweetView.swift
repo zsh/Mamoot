@@ -24,12 +24,20 @@ struct TweetView: View {
                 HStack {
                     Text(model.customName)
                         .bold()
-                    Text("@" + model.userName + " · " + model.date)
+                        .lineLimit(1)
+                    
+                    Text(model.userName)
                         .foregroundColor(.gray)
+                        .lineLimit(1)
+                    
+                    Text(" · " + model.date)
+                        .foregroundColor(.gray)
+                        .lineLimit(1)
+                        .padding(.leading, -7.5)
                 }
                 
                 Text(model.content)
-                    .lineLimit(10)
+                    .lineLimit(13)
                 
                 HStack {
                     HStack {
@@ -52,7 +60,9 @@ struct TweetView: View {
                                 .foregroundColor( isRetweeted ? .green : .gray)
                                 .lineLimit(2)
                         }
-                        .padding()
+                        .padding(.top)
+                        .padding(.bottom)
+                        .padding(.trailing)
                         .font(.subheadline)
                     }
                     
@@ -68,10 +78,11 @@ struct TweetView: View {
                             Text(verbatim:
                                 String(model.likes))
                                 .foregroundColor( isLiked ? .red : .gray)
-                                .foregroundColor(.red)
                                 .lineLimit(2)
                         }
-                        .padding()
+                        .padding(.top)
+                        .padding(.bottom)
+                        .padding(.trailing)
                         .font(.subheadline)
                     }
                     

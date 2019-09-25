@@ -3,7 +3,7 @@
 //  Mamoot!
 //
 //  Created by Alex Modroño Vara on 03/09/2019.
-//  Copyright © 2019 Semiak & JoeyPi. All rights reserved.
+//  Copyright © 2019 Semiak, Lygre & JoeyPi. All rights reserved.
 //
 
 import Foundation
@@ -26,7 +26,7 @@ public class TweetViewModel: ObservableObject, Identifiable {
                 return tweet.author.userName + "@" + instance // username@instance.com
             }
         }
-        return tweet.author.userName //no instance - user is on twitter.com
+        return "@" + tweet.author.userName //no instance - user is on twitter.com
     }
     
     public var profilePicture: URL {

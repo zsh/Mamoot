@@ -3,19 +3,13 @@
 //  Mamoot!
 //
 //  Created by Alex Modroño Vara on 02/09/2019.
-//  Copyright © 2019 Semiak & JoeyPi. All rights reserved.
+//  Copyright © 2019 Semiak, Lygre & JoeyPi. All rights reserved.
 //
 
 import Foundation
 
 // MARK: - Tweet
 public struct Tweet: Hashable, Codable, Identifiable {
-	public struct Profile: Hashable, Codable {
-        let customName: String
-        let userName: String
-        let instance: String?
-    }
-
 	/// conformance to `Identifiable`
 	/// I assume we are parsing these from JSON though, so we do not need to necessarily ensure this `id` immutability
 	public var id: Int { hashValue }
@@ -44,9 +38,13 @@ public struct Tweet: Hashable, Codable, Identifiable {
   }
 }
 
-// MARK: - Example
+// MARK: - Examples
 extension Tweet {
-	static let tweetExample = Tweet(author: exampleAuthor, date: Date(), comments: 100, likes: 1000, retweets: 9999999, content: "Hey, this is an example large tweet that will likely take all the 280 character limit Twitter has, but not the 500 characters limit of Mastodon.\n\nIt also has emojis 😉😴🇪🇸🥳")
+    static let exampleContents = ["iSO 69 jelbrek wen? eta son", "lmao iPhone 420 with 69 cameras now for only 999999€ and one lung. Pretty cheap!", "I sell flamethowers and sent a car to space because I'm rich lmao", "Hey, this is an example large tweet that will likely take all the 280 character limit Twitter has, but not the 500 characters limit of Mastodon.\n\nIt also has emojis 😉😴🇪🇸🥳"]
+    
+    static let exampleAuthors = [Profile(customName: "Apple", userName: "apple", instance: "twitter.com"), Profile(customName: "President & Senpai Elon Musk", userName: "elonmusk", instance: "twitter.com"), Profile(customName: "Pwn20wnd", userName: "pwn20wnd", instance: "twitter.com"), Profile(customName: "Jaime Bishop", userName: "jaimiebishop123", instance: "mastodon.social")]
+    
+    static let tweetExample = Tweet(author: exampleAuthors.randomElement()!, date: Date(), comments: Int.random(in: 0..<99999), likes: Int.random(in: 0..<99999), retweets: Int.random(in: 0..<99999), content: exampleContents.randomElement()!)
 
 	static func generateSample(size: Int) -> [Tweet] {
 		var sampleData = [Tweet]()
@@ -57,5 +55,5 @@ extension Tweet {
 	}
 
 }
-var exampleAuthor = Tweet.Profile(customName: "Semiak", userName: "semiak_", instance: "twitter.com")
+
 var exampleTweetViewModel = TweetViewModel(tweet: Tweet.tweetExample)

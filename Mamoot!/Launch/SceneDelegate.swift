@@ -3,7 +3,7 @@
 //  Mamoot!
 //
 //  Created by Alex Modroño Vara on 02/09/2019.
-//  Copyright © 2019 Semiak & JoeyPi. All rights reserved.
+//  Copyright © 2019 Semiak, Lygre & JoeyPi. All rights reserved.
 //
 
 import UIKit
@@ -24,10 +24,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
+            
+            // MARK: - Custom dark mode
+            // TODO: Move to SwiftUI once implemented
+            UINavigationBar.appearance().backgroundColor = UIColor(named: "backgroundColor")
+            
+            UITableView.appearance().backgroundColor = UIColor(named: "backgroundColor")
+            
+            UITableViewCell.appearance().backgroundColor = UIColor(named: "backgroundColor")
+            
+            UIScrollView.appearance().backgroundColor = UIColor(named: "backgroundColor")
+            
+            UITableView.appearance().allowsSelection = false
+            UITableViewCell.appearance().selectionStyle = .none
+            
+            //UITabBar.appearance().isTranslucent = false
+            //UITabBar.appearance().backgroundColor = UIColor(named: "backgroundColor")
+            
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
+            
         }
     }
 
